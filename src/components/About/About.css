@@ -1,0 +1,193 @@
+.about {
+  position: relative;
+  min-height: 100vh;
+  padding: 8rem 2rem;
+  background: 
+    /* Parchment texture */
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="5" seed="5" /></filter><rect width="200" height="200" filter="url(%23noise)" opacity="0.3"/></svg>'),
+    /* Aged stains */
+    radial-gradient(ellipse 600px 400px at 30% 20%, rgba(139, 115, 85, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 500px 500px at 70% 80%, rgba(107, 89, 69, 0.06) 0%, transparent 60%),
+    /* Base color */
+    linear-gradient(135deg, rgba(212, 197, 176, 0.3) 0%, rgba(201, 185, 161, 0.2) 100%);
+  background-size: 200px 200px, cover, cover, cover;
+  background-blend-mode: multiply, overlay, overlay, normal;
+}
+
+.about::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    /* Paper grain */
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 1px,
+      rgba(139, 115, 85, 0.02) 1px,
+      rgba(139, 115, 85, 0.02) 2px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 1px,
+      rgba(139, 115, 85, 0.02) 1px,
+      rgba(139, 115, 85, 0.02) 2px
+    );
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.about-container {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem;
+  background: rgba(212, 197, 176, 0.03);
+  border: 2px solid rgba(139, 115, 85, 0.3);
+  box-shadow: 
+    0 0 50px rgba(0, 0, 0, 0.5),
+    inset 0 0 50px rgba(212, 165, 116, 0.05);
+}
+
+.section-ornament {
+  text-align: center;
+  font-size: 2rem;
+  color: #8b7355;
+  margin: 1rem 0;
+  opacity: 0.6;
+}
+
+.section-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  text-align: center;
+  color: #2a2419;
+  margin: 2rem 0 4rem;
+  letter-spacing: 0.12em;
+  text-shadow: 
+    1px 1px 0px rgba(212, 197, 176, 0.6),
+    2px 2px 4px rgba(139, 115, 85, 0.3),
+    0 0 20px rgba(212, 165, 116, 0.2);
+  position: relative;
+}
+
+.title-accent {
+  display: inline-block;
+  margin: 0 1rem;
+  font-size: 0.4em;
+  color: #8b7355;
+  vertical-align: middle;
+}
+
+.about-content {
+  color: #d4c5b0;
+}
+
+.about-text {
+  font-family: 'Crimson Text', serif;
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  line-height: 1.9;
+  margin-bottom: 2rem;
+  text-align: justify;
+  color: #2a2419;
+  text-shadow: 0.5px 0.5px 1px rgba(212, 197, 176, 0.5);
+  position: relative;
+}
+
+.intro-text {
+  font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.about-text strong {
+  color: #6b5945;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-shadow: 0.5px 0.5px 1px rgba(212, 165, 116, 0.4);
+}
+
+.story-divider {
+  text-align: center;
+  margin: 3rem 0;
+}
+
+.divider-symbol {
+  font-size: 2rem;
+  color: #8b7355;
+  display: inline-block;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.about-quote {
+  margin-top: 4rem;
+  padding: 2rem;
+  border-left: 4px solid #8b7355;
+  background: rgba(139, 115, 85, 0.15);
+  position: relative;
+  box-shadow: inset 2px 2px 4px rgba(139, 115, 85, 0.1);
+}
+
+.about-quote::before {
+  content: '"';
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  font-size: 6rem;
+  color: rgba(139, 115, 85, 0.25);
+  opacity: 0.5;
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+.about-quote blockquote {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-style: italic;
+  line-height: 1.8;
+  margin: 0 0 1rem 0;
+  color: #3a3428;
+  text-shadow: 0.5px 0.5px 1px rgba(212, 197, 176, 0.5);
+}
+
+.about-quote cite {
+  display: block;
+  text-align: right;
+  font-family: 'Crimson Text', serif;
+  font-size: 1rem;
+  color: #6b5945;
+  font-style: normal;
+}
+
+@media (max-width: 768px) {
+  .about {
+    padding: 6rem 1rem;
+  }
+  
+  .about-container {
+    padding: 2rem 1.5rem;
+  }
+  
+  .title-accent {
+    display: none;
+  }
+  
+  .about-text {
+    text-align: left;
+  }
+  
+  .about-quote {
+    padding: 1.5rem;
+  }
+}
