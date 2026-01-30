@@ -28,6 +28,13 @@ const MobileMenu = () => {
       return;
     }
     
+    // Special handling for Treasure - navigate to Treasure page
+    if (itemName === 'Treasure') {
+      setIsOpen(false);
+      navigate('/treasure');
+      return;
+    }
+    
     setIsOpen(false);
     
     // Smooth scroll to section
