@@ -8,9 +8,9 @@ import img2 from '../../assets/wallgallery/castle2.jpg';
 import img3 from '../../assets/wallgallery/castle3.jpg';
 import img4 from '../../assets/wallgallery/castle4.jpg';
 import img5 from '../../assets/wallgallery/castle5.jpg';
-import img6 from '../../assets/wallgallery/castle6.JPG';
-import img7 from '../../assets/wallgallery/castle7.JPG';
-import img8 from '../../assets/wallgallery/castle8.JPG';
+import img6 from '../../assets/wallgallery/castle6.jpg';
+import img7 from '../../assets/wallgallery/castle7.jpg';
+import img8 from '../../assets/wallgallery/castle8.jpg';
 
 const galleryImages = [
   {
