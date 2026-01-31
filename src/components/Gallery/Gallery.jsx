@@ -13,6 +13,7 @@ import awardCeremony from '../../assets/book/weeklybash27(2).JPG';
 import eventPresentation1 from '../../assets/book/weeklybash27(3).jpg';
 import diceGamePresentation from '../../assets/book/weeklbash27(3).jpg';
 import bingoActivity from '../../assets/book/badgeday25.jpg';
+import juniorWarriorsWelcome from '../../assets/book/junior_warriors_welcome.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -79,6 +80,13 @@ const galleryImages = [
     title: 'Gathering of Merriment',
     description: 'Even in celebration, the Belmonts remain vigilant and steadfast',
     category: 'Heritage'
+  },
+  {
+    id: 10,
+    src: juniorWarriorsWelcome,
+    title: 'Welcoming the New Blood',
+    description: 'A proud moment as fresh junior warriors join the ranks of the legendary Belmont clan, ready to uphold our ancient traditions and forge their own legacy',
+    category: 'Events'
   }
 ];
 
