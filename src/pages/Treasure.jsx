@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { X, ArrowLeft } from 'lucide-react';
+import { X, ArrowLeft, Crown, Sword, BookOpen, Trophy, Shield, Gem } from 'lucide-react';
 import '../styles/Treasure.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -25,48 +25,42 @@ const treasureItems = [
     name: "Crown of Ancients",
     inscription: "Worn by the First King",
     story: "Forged in the fires of Mount Drakon by the legendary blacksmith Aldric the Wise. This crown has passed through seventeen generations of Belmont rulers, each adding their own gemstone to commemorate their greatest triumph. The central ruby is said to glow when danger approaches the kingdom.",
-    icon: "👑",
-    glow: "#ffd700"
+    icon: Crown
   },
   {
     id: 2,
     name: "Sword of Eternal Flame",
     inscription: "Blade That Never Dulls",
     story: "Discovered in the ruins of an ancient temple, this blade burns with an eternal flame that never consumes the metal. Legend tells of Sir Gareth using this sword to defend the kingdom against the Shadow Legion for forty days and nights without rest. The flame grows brighter in the presence of dark magic.",
-    icon: "⚔️",
-    glow: "#ff4500"
+    icon: Sword
   },
   {
     id: 3,
     name: "Tome of Forgotten Spells",
     inscription: "Knowledge of the Elders",
     story: "Written in a language older than time itself, this grimoire contains spells long forgotten by modern mages. Each page is made from dragon scale parchment, making it impervious to fire and water. Only those pure of heart can read its secrets without losing their sanity.",
-    icon: "📖",
-    glow: "#8b00ff"
+    icon: BookOpen
   },
   {
     id: 4,
     name: "Chalice of Renewal",
     inscription: "Vessel of Life Eternal",
     story: "Carved from a single moonstone found at the peak of the Silver Mountains. Water poured into this chalice gains healing properties capable of curing any ailment. The elven queen Sylvara gifted this to the Belmonts as a token of eternal alliance after the Great Unification.",
-    icon: "🏆",
-    glow: "#00ffff"
+    icon: Trophy
   },
   {
     id: 5,
     name: "Shield of Valor",
     inscription: "Defender of the Realm",
     story: "This shield has never been pierced in battle. Forged from the metal of a fallen star and blessed by the high priestess, it bears the marks of a thousand battles. The intricate engravings tell the story of every warrior who has wielded it in defense of the kingdom.",
-    icon: "🛡️",
-    glow: "#silver"
+    icon: Shield
   },
   {
     id: 6,
     name: "Amulet of Whispers",
     inscription: "Speaks Truth to Power",
     story: "This mystical amulet allows its wearer to hear the whispers of the wind, warning of approaching storms, betrayals, and distant threats. Created by the oracle Meridian, it has saved the kingdom from ruin countless times by revealing hidden truths when they were needed most.",
-    icon: "💎",
-    glow: "#00ff00"
+    icon: Gem
   }
 ];
 
@@ -82,28 +76,31 @@ export default function Treasure() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Vault door opening animation on scroll
+      // Initial state - doors closed
+      gsap.set([doorLeftRef.current, doorRightRef.current], {
+        x: 0,
+        rotationY: 0
+      });
+      
+      gsap.set('.treasures-container', {
+        opacity: 0
+      });
+
+      // Auto-open doors after a delay
       const doorTimeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: vaultRef.current,
-          start: 'top center',
-          end: 'top top',
-          scrub: 1,
-          onEnter: () => setIsVaultOpen(true),
-        }
+        delay: 1,
+        onComplete: () => setIsVaultOpen(true)
       });
 
       // Door opens
       doorTimeline.to(doorLeftRef.current, {
         x: '-100%',
-        rotationY: -45,
         duration: 2,
         ease: 'power2.inOut',
       }, 0);
 
       doorTimeline.to(doorRightRef.current, {
         x: '100%',
-        rotationY: 45,
         duration: 2,
         ease: 'power2.inOut',
       }, 0);
@@ -112,18 +109,24 @@ export default function Treasure() {
       doorTimeline.to(lightRef.current, {
         opacity: 1,
         scale: 1.5,
-        duration: 2,
+        duration: 1.5,
         ease: 'power2.out',
       }, 0.5);
 
-      // Treasures fade in and float up
+      // Treasures fade in
+      doorTimeline.to('.treasures-container', {
+        opacity: 1,
+        duration: 1,
+        ease: 'power2.out',
+      }, 1.5);
+      
       doorTimeline.from('.treasure-item', {
         opacity: 0,
-        y: 100,
-        stagger: 0.2,
-        duration: 1,
+        y: 50,
+        stagger: 0.15,
+        duration: 0.8,
         ease: 'back.out(1.2)',
-      }, 1);
+      }, 1.8);
 
       // Dust particles animation
       gsap.to('.dust-particle', {
@@ -226,9 +229,6 @@ export default function Treasure() {
                 key={treasure.id}
                 className="treasure-item"
                 onClick={() => handleTreasureClick(treasure)}
-                style={{
-                  '--glow-color': treasure.glow,
-                }}
               >
                 <div className="treasure-pedestal">
                   <div className="pedestal-top"></div>
@@ -236,7 +236,9 @@ export default function Treasure() {
                   <div className="pedestal-base"></div>
                 </div>
                 <div className="treasure-icon-wrapper">
-                  <div className="treasure-icon">{treasure.icon}</div>
+                  <div className="treasure-icon">
+                    <treasure.icon size={48} strokeWidth={1.5} />
+                  </div>
                   <div className="treasure-glow"></div>
                 </div>
                 <div className="treasure-inscription">
@@ -269,7 +271,9 @@ export default function Treasure() {
               <div className="parchment-edge top"></div>
               
               <div className="story-content">
-                <div className="story-icon">{selectedTreasure.icon}</div>
+                <div className="story-icon">
+                  <selectedTreasure.icon size={64} strokeWidth={1.5} />
+                </div>
                 <h2 className="story-title">{selectedTreasure.name}</h2>
                 <div className="story-divider">✦ ✦ ✦</div>
                 <p className="story-inscription">{selectedTreasure.inscription}</p>

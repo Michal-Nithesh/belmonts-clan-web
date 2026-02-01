@@ -3,16 +3,17 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './Gallery.css';
 
-// Import book images
-import groupPhoto1 from '../../assets/book/group-photo-1.jpg';
-import groupPhoto2 from '../../assets/book/group-photo-2.jpg';
-import participantsLineup from '../../assets/book/participants-lineup.jpg';
-import teamCollaboration from '../../assets/book/team-collaboration.jpg';
-import audienceView from '../../assets/book/audience-view.jpg';
-import awardCeremony from '../../assets/book/award-ceremony.jpg';
-import eventPresentation1 from '../../assets/book/event-presentation-1.jpg';
-import diceGamePresentation from '../../assets/book/dice-game-presentation.jpg';
-import bingoActivity from '../../assets/book/bingo-activity.jpg';
+// Import gallery images
+import groupPhoto1 from '../../assets/book/weeklybash18.jpg';
+import groupPhoto2 from '../../assets/book/weeklybash20.jpg';
+import participantsLineup from '../../assets/book/weeklybash20(1).jpg';
+import teamCollaboration from '../../assets/book/weeklybash23.jpg';
+import audienceView from '../../assets/book/weeklybash26.jpg';
+import awardCeremony from '../../assets/book/weeklybash27(2).JPG';
+import eventPresentation1 from '../../assets/book/weeklybash27(3).jpg';
+import diceGamePresentation from '../../assets/book/weeklbash27(3).jpg';
+import bingoActivity from '../../assets/book/badgeday25.jpg';
+import juniorWarriorsWelcome from '../../assets/book/junior_warriors_welcome.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -79,6 +80,13 @@ const galleryImages = [
     title: 'Gathering of Merriment',
     description: 'Even in celebration, the Belmonts remain vigilant and steadfast',
     category: 'Heritage'
+  },
+  {
+    id: 10,
+    src: juniorWarriorsWelcome,
+    title: 'Welcoming the New Blood',
+    description: 'A proud moment as fresh junior warriors join the ranks of the legendary Belmont clan, ready to uphold our ancient traditions and forge their own legacy',
+    category: 'Events'
   }
 ];
 
